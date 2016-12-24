@@ -119,36 +119,47 @@ $(function () {
     /* TODO: Write a new test suite named "New Feed Selection"*/
     describe('New Feed Selection', function () {
 
-        var initialMenuSelection = 0,
-            headerTitle = $('header-title');
+        var initialTitle, finalTitle,
+            initialMenuSelection = 0;
 
-        // var initialState, finalState;
+
+        /* The test runs the loadFeed() function to get all the data for id = `0`.
+         * The title when the loadFeed() runs once should be a string.
+         */
         beforeEach(function (done) {
             loadFeed(initialMenuSelection++, function (data) {
-                initialState = $('.feed').find('.entry');
-
+                initialTitle = $($('.feed').find('.entry')[0]).children('h2').text();
                 done();
             })
         });
 
+        /* The loadFeed() runs again to get all the data for id = `1` now.
+         * The title when the loadFeed() runs again should be also be a string.
+         */
         beforeEach(function (done) {
             loadFeed(initialMenuSelection, function (data) {
-                finalState = $('.feed').find('.entry');
+                finalTitle = $($('.feed').find('.entry')[0]).children('h2').text();
                 done();
             })
         });
+
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
         it("should change the content", function (done) {
-            console.log(initialState, finalState);
-            expect(initialState.is(finalState)).toBe(false);
+            expect(initialTitle).toBeDefined();
+            expect(initialTitle.length).toBeGreaterThan(0);
+            expect(finalTitle).toBeDefined();
+            expect(finalTitle.length).toBeGreaterThan(0);
+
+            // The strings when the loadFeed() runs first for id = 0 and then for id = 1
+            // should not be same. This means that different content has loaded for each
+            // run.
+            expect(initialTitle === finalTitle).toBe(false);
             done();
         });
-
-
     });
 
 }());

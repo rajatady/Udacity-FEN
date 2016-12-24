@@ -1,0 +1,24 @@
+{
+  "name": "Udacity_Front_End_Nanodegree_testing",
+  "homepage": "https://github.com/rajatady/Udacity-FEN",
+  "authors": [
+    "Kumar DIvya Rajat <rajat.ady@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jasmine-core": "jasmine#^2.5.2",
+    "jasmine-jquery": "^2.1.1",
+    "lodash": "^4.17.3",
+    "handlebars": "^4.0.5",
+    "jquery": "^3.1.1"
+  }
+}
